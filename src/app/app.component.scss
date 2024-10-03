@@ -1,0 +1,16 @@
+/* Add application styles & imports to this file! */
+.app-container {
+    min-height: 320px;
+    overflow: hidden;
+}
+
+.btn-delete-user {
+    width: 40px;
+    text-align: center;
+    box-sizing: content-box;
+}
+
+.bottom-btn{
+    display: flex;
+    justify-content: space-evenly
+}

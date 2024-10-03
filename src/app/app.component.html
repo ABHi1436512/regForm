@@ -1,1 +1,40 @@
-<div>Hello</div>
+
+<div class="app-container col-md-6 offset-md-3 mt-5">
+<div class="card">
+    <h4 class="card-header">Registration Form</h4>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">Username is required</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="country">Country:</label>
+                <select class="form-control" id="country" formControlName="country">
+                  <option value="">Select a Country</option> {{countries.length}}
+                  <option *ngFor="let country of countries" [value]="country.name">{{ country?.name }}</option>
+                </select>
+                <span class="invalid-feedback"
+                  *ngIf="form.get('country')?.invalid && form.get('country')?.touched">
+                  Country is required.
+                </span>
+              </div>
+            <div class="text-left bottom-btn">
+                <button [disabled]="!form.valid" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                    Register
+                </button>
+                <button class="btn btn-warning" type="reset">Clear</button>
+            </div>
+            
+            <div  class="invalid-feedback">
+                <span>{{errorMessage}}</span>
+              </div>
+        </form>
+    </div>
+</div>
+</div>
